@@ -1,25 +1,25 @@
 
 pipeline {
     environment{
-        def JENKINS_HOST = "/home/carayab/registry_local_v2/jenkins"
-        def USR_HOST = "carayab@172.17.0.1"
+        JENKINS_HOST = "/home/carayab/registry_local_v2/jenkins"
+        USR_HOST = "carayab@172.17.0.1"
     }
 
     agent any
     tools {
-        maven 'mvn360'
+        maven 'mvn363'
         jdk 'jdk8'
     }
     stages {
         
         stage ('Build') {
             steps {
-                sh 'mvn --version' 
+                sh 'mvn package' 
             }
         }
         stage ('Build Imagen Docker'){
             steps{
-                sh 'ssh $USR_HOST docker ps'
+                sh 'ssh $USR_HOST docker build -f $JENKINS_HOST/$JOB_NAME/Dockerfile -t $JOB_NAME:$VERSION $JENKINS_HOST/$JOB_NAME/'
             }
         }
 
