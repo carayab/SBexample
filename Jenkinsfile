@@ -13,7 +13,7 @@ pipeline {
         }
         stage ('Build Imagen Docker'){
             steps{
-                sh 'ssh carayab@172.17.0.1 ls -la $HOME/registry_local_v2/jenkins/workspace/'
+                sh 'ssh carayab@172.17.0.1 ls -la /home/carayab/registry_local_v2/jenkins/workspace/$JOB_NAME'
             }
         }
 
