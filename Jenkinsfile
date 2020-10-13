@@ -20,7 +20,7 @@ pipeline {
         }
         stage ('Build Imagen Docker'){
             steps{
-                sh 'ssh $USR_HOST docker build -f $JENKINS_HOST/$JOB_NAME/Dockerfile -t $JOB_NAMElc:$VERSION $JENKINS_HOST/$JOB_NAME/'
+                sh 'ssh $USR_HOST docker build -f $JENKINS_HOST/workspace/$JOB_NAME/Dockerfile -t $JOB_NAMElc:$VERSION $JENKINS_HOST/workspace/$JOB_NAME/'
             }
         }
 
