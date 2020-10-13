@@ -1,3 +1,5 @@
+def JENKINS_HOST = "/home/carayab/registry_local_v2/jenkins"
+def USR_HOST = "carayab@172.17.0.1"
 pipeline {
     agent any
     tools {
@@ -13,7 +15,7 @@ pipeline {
         }
         stage ('Build Imagen Docker'){
             steps{
-                sh 'ssh carayab@172.17.0.1 ls -la /home/carayab/registry_local_v2/jenkins/workspace/$JOB_NAME'
+                sh 'ssh $USR_HOST cd $JENKINS_HOST/workspace/$JOB_NAME && docker build -t $JOB_NAME:$VERSION .'
             }
         }
 
