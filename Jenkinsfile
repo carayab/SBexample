@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        maven 'mvn363'
+        maven 'mvn360'
         jdk 'jdk8'
     }
     stages {
@@ -16,7 +16,7 @@ pipeline {
 
         stage ('Build') {
             steps {
-                sh 'mvn -version' 
+                sh 'mvn package' 
             }
         }
     }
