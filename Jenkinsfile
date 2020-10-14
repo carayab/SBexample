@@ -26,8 +26,8 @@ pipeline {
         }
         stage ('Push en Registry'){
             steps{
-                sh 'docker tag $JOB_NAMElc:$VERSION $REGISTRY_HOST/$JOB_NAMElc:$VERSION'
-                sh 'docker push $REGISTRY_HOST/$JOB_NAMElc:$VERSION'
+                sh 'ssh $USR_HOST docker tag $JOB_NAMElc:$VERSION $REGISTRY_HOST/$JOB_NAMElc:$VERSION'
+                sh 'ssh $USR_HOST docker push $REGISTRY_HOST/$JOB_NAMElc:$VERSION'
             }
         }
 
