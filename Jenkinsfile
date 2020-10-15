@@ -1,10 +1,10 @@
 
 pipeline {
     environment{
-        JENKINS_HOST = "/home/carayab/registry_local_v2/jenkins"
-        COMPOSE_DIR = "/home/carayab/microservicios"
-        USR_HOST = "carayab@172.17.0.1"
-        REGISTRY_HOST = "registry.devops4cloud.com"
+        JENKINS_HOST = "/home/carayab/registry_local_v2/jenkins";
+        COMPOSE_DIR = "/home/carayab/microservicios";
+        USR_HOST = "carayab@172.17.0.1";
+        REGISTRY_HOST = "registry.devops4cloud.com";
         JOB_NAMElc = JOB_NAME.toLowerCase();
     }
 
@@ -34,6 +34,7 @@ pipeline {
         stage ('Despliegue de servicio'){
             steps{
                 sh 'ssh $USR_HOST docker-compose -f $COMPOSE_DIR/$JOB_NAMElc/docker-compose.yml up -d'
+                sh 'ssh $USR_HOST docker-compose -f $COMPOSE_DIR/$JOB_NAMElc/docker-compose.yml logs'
             }
         }
 
